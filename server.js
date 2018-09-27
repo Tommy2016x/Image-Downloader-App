@@ -7,17 +7,22 @@ const tmp = require('tmp');
 const archiver = require('archiver');
 const fs = require('fs');
 const cors = require('cors');
+const {resolve} = require('path');
 
 
 const app = express();
 
 app.use(bodyparser.json());
 app.use(cors())
-app.listen(3000);
 
-app.post('/shot', async (req,res) => {
+app.get('/', (req, res) => {
+    res.sendFile(resolve('index.html'));
+});
+
+app.post('/shot', async(req,res) => {
+    console.log(req.body)
     let archive = archiver('zip')
-    let output = fs.createWriteStream(__dirname + 'target.zip');
+    let output = fs.createWriteStream(__dirname + '/images.zip');
     output.on('close', function() {
         console.log(archive.pointer() + ' total bytes');
         console.log('archiver has been finalized and the output file descriptor has closed.');
@@ -39,30 +44,44 @@ app.post('/shot', async (req,res) => {
         throw err;
       });
       
-
-    console.log(req.body)
-    const { images } = req.body;
+      
+    
+    let { image , amount } = req.body;
+    console.log(image)
+    console.log(amount)
+    let query = {query: image}
     let urls = [];
     let dir = tmp.dirSync();
+    console.log(dir.name)
+    
+    let url = await imagesearch.google(query);
 
-    for(let img of images){
+    for(let i = 0; i< parseInt(amount); i++){
         
-        let url = await imagesearch.google({query:img});
+        
+        console.log(url)
         let options = {
-            url: url[0].url,
+            url: url[i].url,
             dest: dir.name
+            
         }
-        console.log(img)
+        
 
        let {filename,image} = await downloader.image(options)
+       console.log('downloaded')
         
-        urls.push(url[0].url)
+       await urls.push(url[0].url)
     }
 
-    archive.pipe(output);
-    archive.directory(dir.name,false)
-    archive.finalize();
-    res.download(__dirname + '/downloads/txt.txt','txt.txt');
-    res.send('sent')
-    console.log(dir.name);
+    await archive.pipe(output);
+    await archive.directory(dir.name,false)
+    await archive.finalize();
+    res.sendStatus('200');
+  console.log('done')
 })
+
+app.get('/shots', (req, res) => {
+  res.download('images.zip');
+})
+
+app.listen(3000);
