@@ -77,7 +77,7 @@ app.post('/shot', async(req,res) => {
     await archive.pipe(output);
     await archive.directory(dir.name,false)
     await archive.finalize();
-    res.sendStatus('200');
+    res.sendStatus('302');
   console.log('done')
 })
 
