@@ -90,7 +90,7 @@
             })
 
             console.log(formdata);
-            let url = 'http://localhost:3000/shot';
+            let url = 'https://image-down.herokuapp.com/shot';
 
             let options = {
                 method: "POST",
@@ -104,7 +104,7 @@
         }
 
         function download() {
-            let url = 'http://localhost:3000/shots'
+            let url = 'https://image-down.herokuapp.com/shots'
             // fetch(url, { responseType:'blob' })
             window.open(url);
         }
