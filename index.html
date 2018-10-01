@@ -14,11 +14,22 @@
 
         body{
             font-family: 'Open Sans', sans-serif;
-            background-color:#8B635C
+            font-size: 18px;
         }
 
-        p, h1, h5, label{
-            color:#DDD78D;
+        h5{
+            font-size: 1.5em;
+        }
+         h1{
+            color:#ecf0f1;
+        }
+
+        .background{
+            background-color: #34495e;
+            text-align: center;
+            padding-top:1px;
+            padding-bottom: 1px;
+            margin-bottom: 30px;
         }
         .container{
             display: flex;
@@ -30,46 +41,62 @@
         }
 
         .mdl-button{
-            width: 200px;
+            width: 250px;
+            margin-top: 20px;
+            
         }
 
         .mdl-button--raised.mdl-button--colored {
-            background: #60594D;
-            color: #DCBF85
+            background: #2c3e50;
+            color: #ecf0f1;
+            font-size: 1em;
         }
 
         .mdl-textfield__label{
-            color: #DCBF85
+            color: rgb(150, 150, 150);
+            font-size: 1.25em;
+        }
+
+        .mdl-textfield__input{
+            font-size: 1.25em;
         }
 
         .input{
             margin-right: 20px;
-            color: #DCBF85;
+        }
+
+        input{
+            font-size: 1.25em;
+            color:red;
         }
 
         
     </style>
 </head>
 <body>
+        <div class="background">
+                <h1 class="title">Image Downloader</h1>
+              </div>
     <div class="container">
     <form>
-        <h1 class="title">Image Downloader</h1>
+        
+        
         <h5>Enter image you wish to download and amount of copies</h5>
         <div class="mdl-textfield mdl-js-textfield input">
             <input class="mdl-textfield__input" name="search" type="text" id="sample1">
-            <label class="mdl-textfield__label" for="sample1">Enter image to search</label>
+            <label class="mdl-textfield__label" for="sample1">Enter image to download</label>
           </div>
           <div class="mdl-textfield mdl-js-textfield">
             <input class="mdl-textfield__input" name="amount" type="number" id="sample1">
-            <label class="mdl-textfield__label" for="sample1">How many copies to do you want?</label> 
+            <label class="mdl-textfield__label" for="sample1">Enter amount of copies</label> 
           </div>
           <div>
           
           </div>
     </form>
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-            Download Images
-          </button>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+         Download Images
+         </button>
 </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
