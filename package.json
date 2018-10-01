@@ -2,6 +2,7 @@
   "name": "challenge",
   "version": "1.0.0",
   "description": "",
+  "main": "server.js",
   "dependencies": {
     "archiver": "^3.0.0",
     "cors": "^2.8.4",
@@ -16,7 +17,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

@@ -8,6 +8,7 @@ const archiver = require('archiver');
 const fs = require('fs');
 const cors = require('cors');
 const {resolve} = require('path');
+const port = process.env.PORT || 3000;
 
 
 const app = express();
@@ -84,4 +85,4 @@ app.get('/shots', (req, res) => {
   res.download('images.zip');
 })
 
-app.listen(3000);
+app.listen(port);
